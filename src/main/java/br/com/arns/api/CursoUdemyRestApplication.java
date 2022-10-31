@@ -1,5 +1,6 @@
 package br.com.arns.api;
 
+import br.com.arns.api.utils.PasswordUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -20,7 +21,17 @@ public class CursoUdemyRestApplication {
 
     @Bean
     public CommandLineRunner commandLineRunner() {
-        return args -> System.out.println("### Quantidade de elementos por página = " + qtdPorPagina);
+        return args -> {
+            String encodedPassword = PasswordUtils.encryptPassword("123456");
+            System.out.println(encodedPassword);
+
+            encodedPassword = PasswordUtils.encryptPassword("123456");
+            System.out.println(encodedPassword);
+
+            System.out.println("Senha válida: " + PasswordUtils.validatePassword("123456", encodedPassword));
+
+            System.out.println("### Quantidade de elementos por página = " + qtdPorPagina);
+        };
     }
 
 }
