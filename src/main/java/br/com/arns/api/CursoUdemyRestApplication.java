@@ -22,6 +22,7 @@ public class CursoUdemyRestApplication {
     @Bean
     public CommandLineRunner commandLineRunner() {
         return args -> {
+            // Testes criptografia de senhas
             String encodedPassword = PasswordUtils.encryptPassword("123456");
             System.out.println(encodedPassword);
 
@@ -30,6 +31,7 @@ public class CursoUdemyRestApplication {
 
             System.out.println("Senha válida: " + PasswordUtils.validatePassword("123456", encodedPassword));
 
+            // Teste busca de valores das properties da aplicação
             System.out.println("### Quantidade de elementos por página = " + qtdPorPagina);
         };
     }
